@@ -14,10 +14,18 @@ let calculatedNumber;
 
 operators.addEventListener('click', (event) => {
   if (event.target.className === 'operator') {
-    if (event.target.innerHTML === '÷') {
+    if (event.target.innerHTML === '÷' && operationToPerform.length === 0) {
       operationToPerform.push('/');
-    } else {
+    } else if (operationToPerform.length === 0) {
       operationToPerform.push(event.target.innerHTML);
+    } else if (operationToPerform.length !== 0) {
+      if (event.target.innerHTML === '÷') {
+        operationToPerform = [];
+        operationToPerform.push('/');
+      } else {
+        operationToPerform = [];
+        operationToPerform.push(event.target.innerHTML);
+      }
     }
     // grab the LAST  number from numberPlaceHolder add to numbersToAdd
     numbersToCalculate.push(numberPlaceHolder[numberPlaceHolder.length - 1]);
