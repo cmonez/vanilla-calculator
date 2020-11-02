@@ -69,23 +69,27 @@ calculate.addEventListener('click', (event) => {
         console.log('Hitting this case?');
         calculatedNumber = numbersToCalculate[0] + numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
+        resultDisplay.innerHTML = calculatedNumber;
         console.log(calculatedNumber);
         break;
       case operationToPerform[0] === '-':
         calculatedNumber = numbersToCalculate[0] - numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
+        resultDisplay.innerHTML = calculatedNumber;
         console.log(calculatedNumber);
         break;
       case operationToPerform[0] === 'x':
         console.log('Multiply');
         calculatedNumber = numbersToCalculate[0] * numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
+        resultDisplay.innerHTML = calculatedNumber;
         console.log(calculatedNumber);
         break;
       case operationToPerform[0] === '÷':
         console.log('Here are the numbers to calculate', numbersToCalculate);
         calculatedNumber = numbersToCalculate[0] / numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
+        resultDisplay.innerHTML = calculatedNumber;
         console.log(calculatedNumber);
         break;
     }
