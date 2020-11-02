@@ -9,6 +9,7 @@ let numbersToCalculate = [];
 let operationToPerformPlaceHolder = [];
 let operationToPerform = [];
 let onSecondNumber = false;
+let clickedSecondNumber = false;
 
 operators.addEventListener('click', (event) => {
   if (event.target.className === 'operator') {
@@ -21,6 +22,7 @@ operators.addEventListener('click', (event) => {
     numbersToCalculate.push(numberPlaceHolder[numberPlaceHolder.length - 1]);
     // reset numberPlaceHolder
     numberPlaceHolder = [];
+    onSecondNumber = true;
     // console.log(numbersToCalculate);
   }
 });
@@ -35,12 +37,23 @@ numbers.addEventListener('click', (event) => {
     numberPlaceHolder.push(Number(resultDisplay.innerHTML));
   }
 
-  if (numbersToCalculate.length === 1) {
+  if (
+    numbersToCalculate.length === 1 &&
+    onSecondNumber === true &&
+    clickedSecondNumber === false
+  ) {
     // if (numberOfTimesClicked === 0) {
-      resultDisplay.innerHTML = event.target.innerHTML;
-      numberPlaceHolder.push(Number(resultDisplay.innerHTML));
-      console.log('AFTER CLICKING in second time', numberPlaceHolder);
-      numberOfTimesClicked++;
-    }
+    resultDisplay.innerHTML = event.target.innerHTML;
+    numberPlaceHolder.push(Number(resultDisplay.innerHTML));
+    console.log('AFTER CLICKING in second time', numberPlaceHolder);
+    clickedSecondNumber = true;
+  } else if (
+    numbersToCalculate.length === 1 &&
+    onSecondNumber === true &&
+    clickedSecondNumber === true
+  ) {
+    resultDisplay.innerHTML += event.target.innerHTML;
+    numberPlaceHolder.push(Number(resultDisplay.innerHTML));
+    console.log('AFTER CLICKING in second time', numberPlaceHolder);
   }
 });
