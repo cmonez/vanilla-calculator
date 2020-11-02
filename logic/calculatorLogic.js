@@ -6,7 +6,9 @@ const calculate = document.getElementById('equals');
 // Array to put all clicked numbbers
 let numberPlaceHolder = [];
 let numbersToCalculate = [];
+let operationToPerformPlaceHolder = [];
 let operationToPerform = [];
+let onSecondNumber = false;
 
 operators.addEventListener('click', (event) => {
   if (event.target.className === 'operator') {
@@ -19,17 +21,26 @@ operators.addEventListener('click', (event) => {
     numbersToCalculate.push(numberPlaceHolder[numberPlaceHolder.length - 1]);
     // reset numberPlaceHolder
     numberPlaceHolder = [];
-    console.log(numbersToCalculate);
+    // console.log(numbersToCalculate);
   }
 });
 
 numbers.addEventListener('click', (event) => {
-  if (event.target.className === 'number') {
+  // let numberOfTimesClicked = 0;
+  if (event.target.className === 'number' && numbersToCalculate.length !== 1) {
     console.log('HERE IS THE NUMBER CLICKED ATM', event.target.innerHTML);
     // Keep adding digits to the html
     resultDisplay.innerHTML += event.target.innerHTML;
     // push number
     numberPlaceHolder.push(Number(resultDisplay.innerHTML));
-    console.log('AFTER CLICKING', numberPlaceHolder);
+  }
+
+  if (numbersToCalculate.length === 1) {
+    // if (numberOfTimesClicked === 0) {
+      resultDisplay.innerHTML = event.target.innerHTML;
+      numberPlaceHolder.push(Number(resultDisplay.innerHTML));
+      console.log('AFTER CLICKING in second time', numberPlaceHolder);
+      numberOfTimesClicked++;
+    }
   }
 });
