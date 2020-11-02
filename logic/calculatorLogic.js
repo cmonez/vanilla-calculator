@@ -10,6 +10,7 @@ let operationToPerformPlaceHolder = [];
 let operationToPerform = [];
 let onSecondNumber = false;
 let clickedSecondNumber = false;
+let calculatedNumber;
 
 operators.addEventListener('click', (event) => {
   if (event.target.className === 'operator') {
@@ -55,5 +56,29 @@ numbers.addEventListener('click', (event) => {
     resultDisplay.innerHTML += event.target.innerHTML;
     numberPlaceHolder.push(Number(resultDisplay.innerHTML));
     console.log('AFTER CLICKING in second time', numberPlaceHolder);
+  }
+});
+
+calculate.addEventListener('click', (event) => {
+  numbersToCalculate.push(numberPlaceHolder[numberPlaceHolder.length - 1]);
+  numberPlaceHolder = [];
+  switch (numbersToCalculate.length === 2) {
+    case operationToPerform[0] === '÷':
+      console.log('Here are the numbers to calculate', numbersToCalculate);
+      calculatedNumber = numbersToCalculate[0] / numbersToCalculate[1];
+      console.log(calculatedNumber);
+      break;
+    case operationToPerform[0] === '+':
+      calculatedNumber = numbersToCalculate[0] + numbersToCalculate[1];
+      console.log(calculatedNumber);
+      break;
+    case operationToPerform[0] === '-':
+      calculatedNumber = numbersToCalculate[0] - numbersToCalculate[1];
+      console.log(calculatedNumber);
+      break;
+    case operationToPerform[0] === 'x':
+      calculatedNumber = numbersToCalculate[0] * numbersToCalculate[1];
+      console.log(calculatedNumber);
+      break;
   }
 });
