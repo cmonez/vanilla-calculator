@@ -1,7 +1,7 @@
 const numbers = document.getElementById('numbers');
 const resultDisplay = document.getElementById('result');
 const operators = document.getElementById('operations')
-
+const calculate = document.getElementById('equals');
 
 const numbersToAdd = [];
 const operationToPerform = [];
@@ -20,3 +20,4 @@ numbers.addEventListener('click', event => {
     resultDisplay.innerHTML += event.target.innerHTML
   }
 })
+
