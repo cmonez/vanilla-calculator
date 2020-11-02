@@ -62,23 +62,32 @@ numbers.addEventListener('click', (event) => {
 calculate.addEventListener('click', (event) => {
   numbersToCalculate.push(numberPlaceHolder[numberPlaceHolder.length - 1]);
   numberPlaceHolder = [];
-  switch (numbersToCalculate.length === 2) {
-    case operationToPerform[0] === '÷':
-      console.log('Here are the numbers to calculate', numbersToCalculate);
-      calculatedNumber = numbersToCalculate[0] / numbersToCalculate[1];
-      console.log(calculatedNumber);
-      break;
-    case operationToPerform[0] === '+':
-      calculatedNumber = numbersToCalculate[0] + numbersToCalculate[1];
-      console.log(calculatedNumber);
-      break;
-    case operationToPerform[0] === '-':
-      calculatedNumber = numbersToCalculate[0] - numbersToCalculate[1];
-      console.log(calculatedNumber);
-      break;
-    case operationToPerform[0] === 'x':
-      calculatedNumber = numbersToCalculate[0] * numbersToCalculate[1];
-      console.log(calculatedNumber);
-      break;
+  console.log('OPERATION PERFORM', operationToPerform);
+  if (event.target.className === 'calculate') {
+    switch (numbersToCalculate.length > 1) {
+      case operationToPerform[0] === '+':
+        console.log('Hitting this case?');
+        calculatedNumber = numbersToCalculate[0] + numbersToCalculate[1];
+        numbersToCalculate[0] = calculatedNumber;
+        console.log(calculatedNumber);
+        break;
+      case operationToPerform[0] === '-':
+        calculatedNumber = numbersToCalculate[0] - numbersToCalculate[1];
+        numbersToCalculate[0] = calculatedNumber;
+        console.log(calculatedNumber);
+        break;
+      case operationToPerform[0] === 'x':
+        console.log('Multiply');
+        calculatedNumber = numbersToCalculate[0] * numbersToCalculate[1];
+        numbersToCalculate[0] = calculatedNumber;
+        console.log(calculatedNumber);
+        break;
+      case operationToPerform[0] === '÷':
+        console.log('Here are the numbers to calculate', numbersToCalculate);
+        calculatedNumber = numbersToCalculate[0] / numbersToCalculate[1];
+        numbersToCalculate[0] = calculatedNumber;
+        console.log(calculatedNumber);
+        break;
+    }
   }
 });
