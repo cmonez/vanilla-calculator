@@ -4,72 +4,52 @@ const operators = document.getElementById('operations');
 const calculate = document.getElementById('equals');
 
 // Array to put all clicked numbbers
-let numberPlaceHolder = [];
 let numbersToCalculate = [];
-let operationToPerformPlaceHolder = [];
 let operationToPerform = [];
 let onSecondNumber = false;
-let clickedSecondNumber = false;
 let calculatedNumber;
+let onFirstNumber = true;
 
 operators.addEventListener('click', (event) => {
-  if (event.target.className === 'operator') {
-    if (event.target.innerHTML === '÷' && operationToPerform.length === 0) {
-      operationToPerform.push('/');
-    } else if (operationToPerform.length === 0) {
-      operationToPerform.push(event.target.innerHTML);
-    } else if (operationToPerform.length !== 0) {
-      if (event.target.innerHTML === '÷') {
-        operationToPerform = [];
-        operationToPerform.push('/');
-      } else {
-        operationToPerform = [];
-        operationToPerform.push(event.target.innerHTML);
-      }
-    }
-    // grab the LAST  number from numberPlaceHolder add to numbersToAdd
-    numbersToCalculate.push(numberPlaceHolder[numberPlaceHolder.length - 1]);
-    // reset numberPlaceHolder
-    numberPlaceHolder = [];
-    onSecondNumber = true;
-    // console.log(numbersToCalculate);
+  if (
+    event.target.className === 'operator' &&
+    numbersToCalculate.length === 0
+  ) {
+    numbersToCalculate.push(Number(resultDisplay.innerHTML));
+  }
+  if (numbersToCalculate.length === 2) {
+    numbersToCalculate = numbersToCalculate.slice(0, 1);
+    onSecondNumber = false;
+  }
+  if (event.target.innerHTML === '÷') {
+    operationToPerform[0] = '/';
+  } else {
+    operationToPerform[0] = event.target.innerHTML;
   }
 });
 
 numbers.addEventListener('click', (event) => {
-  // let numberOfTimesClicked = 0;
-  if (event.target.className === 'number' && numbersToCalculate.length !== 1) {
-    console.log('HERE IS THE NUMBER CLICKED ATM', event.target.innerHTML);
-    // Keep adding digits to the html
-    resultDisplay.innerHTML += event.target.innerHTML;
-    // push number
-    numberPlaceHolder.push(Number(resultDisplay.innerHTML));
-  }
-
-  if (
-    numbersToCalculate.length === 1 &&
-    onSecondNumber === true &&
-    clickedSecondNumber === false
-  ) {
-    // if (numberOfTimesClicked === 0) {
-    resultDisplay.innerHTML = event.target.innerHTML;
-    numberPlaceHolder.push(Number(resultDisplay.innerHTML));
-    console.log('AFTER CLICKING in second time', numberPlaceHolder);
-    clickedSecondNumber = true;
-  } else if (
-    numbersToCalculate.length === 1 &&
-    onSecondNumber === true &&
-    clickedSecondNumber === true
-  ) {
-    resultDisplay.innerHTML += event.target.innerHTML;
-    numberPlaceHolder.push(Number(resultDisplay.innerHTML));
-    console.log('AFTER CLICKING in second time', numberPlaceHolder);
+  if (event.target.className === 'number') {
+    if (onFirstNumber) {
+      resultDisplay.innerHTML = '';
+      onFirstNumber = false;
+    }
+    if (numbersToCalculate.length === 0) {
+      resultDisplay.innerHTML += event.target.innerHTML;
+    } else if (onSecondNumber === false) {
+      resultDisplay.innerHTML = event.target.innerHTML;
+      onSecondNumber = true;
+    } else {
+      resultDisplay.innerHTML += event.target.innerHTML;
+    }
   }
 });
 
 calculate.addEventListener('click', (event) => {
-  numbersToCalculate.push(numberPlaceHolder[numberPlaceHolder.length - 1]);
-  numberPlaceHolder = [];
+  if (numbersToCalculate.length === 1) {
+    numbersToCalculate.push(Number(resultDisplay.innerHTML));
+  }
+  console.log(numbersToCalculate);
   console.log('OPERATION PERFORM', operationToPerform);
   if (event.target.className === 'calculate') {
     switch (numbersToCalculate.length > 1) {
@@ -78,27 +58,27 @@ calculate.addEventListener('click', (event) => {
         calculatedNumber = numbersToCalculate[0] + numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
         resultDisplay.innerHTML = calculatedNumber;
-        console.log(calculatedNumber);
+        console.log(numbersToCalculate);
         break;
       case operationToPerform[0] === '-':
         calculatedNumber = numbersToCalculate[0] - numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
         resultDisplay.innerHTML = calculatedNumber;
-        console.log(calculatedNumber);
+        console.log(numbersToCalculate);
         break;
       case operationToPerform[0] === 'x':
         console.log('Multiply');
         calculatedNumber = numbersToCalculate[0] * numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
         resultDisplay.innerHTML = calculatedNumber;
-        console.log(calculatedNumber);
+        console.log(numbersToCalculate);
         break;
-      case operationToPerform[0] === '÷':
+      case operationToPerform[0] === '/':
         console.log('Here are the numbers to calculate', numbersToCalculate);
         calculatedNumber = numbersToCalculate[0] / numbersToCalculate[1];
         numbersToCalculate[0] = calculatedNumber;
         resultDisplay.innerHTML = calculatedNumber;
-        console.log(calculatedNumber);
+        console.log(numbersToCalculate);
         break;
     }
   }
