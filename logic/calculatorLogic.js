@@ -2,6 +2,7 @@ const numbers = document.getElementById('numbers');
 const resultDisplay = document.getElementById('result');
 const operators = document.getElementById('operations');
 const calculate = document.getElementById('equals');
+const clear = document.querySelector('.clear');
 
 // Array to put all clicked numbbers
 let numbersToCalculate = [];
@@ -13,6 +14,16 @@ let onFirstNumber = true;
 numbers.addEventListener('click', getNumbersForCalculation);
 operators.addEventListener('click', chooseOperation);
 calculate.addEventListener('click', doCalculation);
+clear.addEventListener('click', clearCalulator);
+
+function clearCalulator(event) {
+  numbersToCalculate = [];
+  operationToPerform = [];
+  onSecondNumber = false;
+  calculatedNumber = null;
+  onFirstNumber = true;
+  resultDisplay.innerHTML = 0;
+}
 
 function chooseOperation(event) {
   if (
