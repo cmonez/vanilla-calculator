@@ -73,7 +73,10 @@ function getNumbersForCalculation(event) {
     }
   }
   // Run same functionality for spans as well
-  if (event.target.className === 'integer') {
+  if (
+    event.target.className === 'integer' ||
+    event.target.className === 'decimal'
+  ) {
     if (onFirstNumber) {
       resultDisplay.innerHTML = '';
       onFirstNumber = false;
