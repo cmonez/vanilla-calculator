@@ -6,7 +6,6 @@ body {
 .calculator {
   height: 80%;
   width: 95%;
-  /* background: pink; */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -15,10 +14,7 @@ body {
   flex-direction: column;
   border: 2px solid black;
   border-radius: 6px;
-<<<<<<< HEAD
   background: rgb(234, 234, 234);
-=======
->>>>>>> d12e8a626904a3b438b50f99a29012a26b90ddec
 }
 
 #result {
@@ -30,7 +26,6 @@ body {
 }
 
 .resultCalcuation {
-  /* position: absolute; */
   position: absolute;
   bottom: 0;
   right: 0;
@@ -64,8 +59,10 @@ body {
   background: #c2c2c2;
   border-radius: 50%;
   text-align: center;
-  /* vertical-align: middle; */
-  /* line-height: 25%; */
+}
+
+.operator:hover {
+  box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
 }
 
 #numbers {
@@ -85,6 +82,11 @@ body {
   /* position: relative; */
 }
 
+.number:hover {
+  /* color: pink; */
+  box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
 span {
   display: block;
   position: relative;
@@ -97,6 +99,10 @@ span {
   background: #ff0505;
   border-radius: 10px;
   font-size: 30px;
+}
+
+#equals:hover {
+  box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
 }
 
 .calculate {
@@ -118,11 +124,10 @@ span {
     max-height: 600px;
   }
 }
-/*  */
+
 @media (min-width: 600px) {
   .calculator {
     max-width: 400px;
     max-height: 700px;
   }
 }
-
