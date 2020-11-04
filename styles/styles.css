@@ -86,12 +86,13 @@ span {
 }
 
 #equals {
-  width: 100%;
+  width: 85%;
   background: #ff0505;
   border-radius: 10px;
 }
 
 .calculate {
-  width: 100%;
+  width: 70%;
   height: 100%;
+  margin-left: 20px;
 }
