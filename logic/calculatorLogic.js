@@ -25,21 +25,35 @@ function clearCalulator(event) {
 }
 
 function chooseOperation(event) {
-  if (
-    event.target.className === 'operator' &&
-    numbersToCalculate.length === 0
-  ) {
-    console.log('The results', resultDisplay.innerHTML);
-    numbersToCalculate.push(Number(resultDisplay.innerHTML));
+  if (event.target.className === 'operator') {
+    if (numbersToCalculate.length === 0) {
+      console.log('The results', resultDisplay.innerHTML);
+      numbersToCalculate.push(Number(resultDisplay.innerHTML));
+    }
+    if (numbersToCalculate.length === 2) {
+      numbersToCalculate = numbersToCalculate.slice(0, 1);
+      onSecondNumber = false;
+    }
+    if (event.target.innerHTML === '÷') {
+      operationToPerform[0] = '/';
+    } else {
+      operationToPerform[0] = event.target.firstElementChild.innerHTML;
+    }
   }
-  if (numbersToCalculate.length === 2) {
-    numbersToCalculate = numbersToCalculate.slice(0, 1);
-    onSecondNumber = false;
-  }
-  if (event.target.innerHTML === '÷') {
-    operationToPerform[0] = '/';
-  } else {
-    operationToPerform[0] = event.target.innerHTML;
+  if (event.target.className === 'operator-span') {
+    if (numbersToCalculate.length === 0) {
+      console.log('The results', resultDisplay.innerHTML);
+      numbersToCalculate.push(Number(resultDisplay.innerHTML));
+    }
+    if (numbersToCalculate.length === 2) {
+      numbersToCalculate = numbersToCalculate.slice(0, 1);
+      onSecondNumber = false;
+    }
+    if (event.target.innerHTML === '÷') {
+      operationToPerform[0] = '/';
+    } else {
+      operationToPerform[0] = event.target.innerHTML;
+    }
   }
 }
 
