@@ -20,4 +20,6 @@
   height: 80%;
   width: 100%;
   background: red;
+  display: flex;
+  flex-direction: row;
 }
