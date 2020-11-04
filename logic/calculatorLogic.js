@@ -29,7 +29,8 @@ function chooseOperation(event) {
     event.target.className === 'operator' &&
     numbersToCalculate.length === 0
   ) {
-    numbersToCalculate.push(Number(resultDisplay.firstElementChild.innerHTML));
+    console.log('The results', resultDisplay.innerHTML);
+    numbersToCalculate.push(Number(resultDisplay.innerHTML));
   }
   if (numbersToCalculate.length === 2) {
     numbersToCalculate = numbersToCalculate.slice(0, 1);
@@ -49,19 +50,19 @@ function getNumbersForCalculation(event) {
       onFirstNumber = false;
     }
     if (numbersToCalculate.length === 0) {
-      resultDisplay.innerHTML += event.target.innerHTML;
+      resultDisplay.innerHTML += event.target.firstElementChild.innerHTML;
     } else if (onSecondNumber === false) {
-      resultDisplay.innerHTML = event.target.innerHTML;
+      resultDisplay.innerHTML = event.target.firstElementChild.innerHTML;
       onSecondNumber = true;
     } else {
-      resultDisplay.innerHTML += event.target.innerHTML;
+      resultDisplay.innerHTML += event.target.firstElementChild.innerHTML;
     }
   }
 }
 
 function doCalculation(event) {
   if (numbersToCalculate.length === 1) {
-    numbersToCalculate.push(Number(resultDisplay.firstElementChild.innerHTML));
+    numbersToCalculate.push(Number(resultDisplay.innerHTML));
   }
   console.log(numbersToCalculate);
   console.log('OPERATION PERFORM', operationToPerform);
