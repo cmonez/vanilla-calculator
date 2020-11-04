@@ -15,3 +15,9 @@
   width: 100%;
   background: blue;
 }
+
+.calculator-body {
+  height: 80%;
+  width: 100%;
+  background: red;
+}
