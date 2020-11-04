@@ -58,6 +58,21 @@ function getNumbersForCalculation(event) {
       resultDisplay.innerHTML += event.target.firstElementChild.innerHTML;
     }
   }
+  // Run same functionality for spans as well
+  if (event.target.className === 'integer') {
+    if (onFirstNumber) {
+      resultDisplay.innerHTML = '';
+      onFirstNumber = false;
+    }
+    if (numbersToCalculate.length === 0) {
+      resultDisplay.innerHTML += event.target.innerHTML;
+    } else if (onSecondNumber === false) {
+      resultDisplay.innerHTML = event.target.innerHTML;
+      onSecondNumber = true;
+    } else {
+      resultDisplay.innerHTML += event.target.innerHTML;
+    }
+  }
 }
 
 function doCalculation(event) {
