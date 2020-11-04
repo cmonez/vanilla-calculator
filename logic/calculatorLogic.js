@@ -3,7 +3,6 @@ const resultDisplay = document.querySelector('.resultCalcuation');
 const operators = document.getElementById('operations');
 const calculate = document.getElementById('equals');
 const clear = document.querySelector('.clear');
-
 // Array to put all clicked numbbers
 let numbersToCalculate = [];
 let operationToPerform = [];
@@ -30,7 +29,7 @@ function chooseOperation(event) {
     event.target.className === 'operator' &&
     numbersToCalculate.length === 0
   ) {
-    numbersToCalculate.push(Number(resultDisplay.innerHTML));
+    numbersToCalculate.push(Number(resultDisplay.firstElementChild.innerHTML));
   }
   if (numbersToCalculate.length === 2) {
     numbersToCalculate = numbersToCalculate.slice(0, 1);
@@ -62,7 +61,7 @@ function getNumbersForCalculation(event) {
 
 function doCalculation(event) {
   if (numbersToCalculate.length === 1) {
-    numbersToCalculate.push(Number(resultDisplay.innerHTML));
+    numbersToCalculate.push(Number(resultDisplay.firstElementChild.innerHTML));
   }
   console.log(numbersToCalculate);
   console.log('OPERATION PERFORM', operationToPerform);
