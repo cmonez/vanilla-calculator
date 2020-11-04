@@ -10,7 +10,11 @@ let onSecondNumber = false;
 let calculatedNumber;
 let onFirstNumber = true;
 
-operators.addEventListener('click', (event) => {
+numbers.addEventListener('click', getNumbersForCalculation);
+operators.addEventListener('click', chooseOperation);
+calculate.addEventListener('click', doCalculation);
+
+function chooseOperation(event) {
   if (
     event.target.className === 'operator' &&
     numbersToCalculate.length === 0
@@ -26,9 +30,9 @@ operators.addEventListener('click', (event) => {
   } else {
     operationToPerform[0] = event.target.innerHTML;
   }
-});
+}
 
-numbers.addEventListener('click', (event) => {
+function getNumbersForCalculation(event) {
   if (event.target.className === 'number') {
     if (onFirstNumber) {
       resultDisplay.innerHTML = '';
@@ -43,9 +47,9 @@ numbers.addEventListener('click', (event) => {
       resultDisplay.innerHTML += event.target.innerHTML;
     }
   }
-});
+}
 
-calculate.addEventListener('click', (event) => {
+function doCalculation(event) {
   if (numbersToCalculate.length === 1) {
     numbersToCalculate.push(Number(resultDisplay.innerHTML));
   }
@@ -82,4 +86,4 @@ calculate.addEventListener('click', (event) => {
         break;
     }
   }
-});
+}
