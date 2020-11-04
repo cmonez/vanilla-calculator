@@ -15,7 +15,10 @@ body {
   flex-direction: column;
   border: 2px solid black;
   border-radius: 6px;
+<<<<<<< HEAD
   background: rgb(234, 234, 234);
+=======
+>>>>>>> d12e8a626904a3b438b50f99a29012a26b90ddec
 }
 
 #result {
@@ -122,3 +125,4 @@ span {
     max-height: 700px;
   }
 }
+
