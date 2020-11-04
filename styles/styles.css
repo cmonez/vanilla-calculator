@@ -14,6 +14,14 @@
   height: 20%;
   width: 100%;
   background: rgb(196, 196, 232);
+  position: relative;
+}
+
+.resultCalcuation {
+  /* position: absolute; */
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .calculator-body {

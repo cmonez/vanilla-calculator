@@ -1,5 +1,5 @@
 const numbers = document.getElementById('numbers');
-const resultDisplay = document.getElementById('result');
+const resultDisplay = document.querySelector('.resultCalcuation');
 const operators = document.getElementById('operations');
 const calculate = document.getElementById('equals');
 const clear = document.querySelector('.clear');
