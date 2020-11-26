@@ -1,2 +1,6 @@
-# vanilla-calculator
-Vanilla JS, HTML &amp; CSS calculator
+# Vanilla JS Caclculator
+
+- Created using Vanilla JS, & HTML
+- Created using a mobile-frist approach
+
+  ![](Calculator.gif)
